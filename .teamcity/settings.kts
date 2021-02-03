@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.githubConnection
 
 /*
@@ -27,6 +28,12 @@ version = "2020.2"
 
 project {
 
+    subProject {
+        name = "TSHS"
+
+        buildType(ReplaceFluentFromCIDockerRepotoCDTestDockerRepo)
+    }
+
     features {
         githubConnection {
             id = "PROJECT_EXT_4"
@@ -36,3 +43,16 @@ project {
         }
     }
 }
+
+object ReplaceFluentFromCIDockerRepotoCDTestDockerRepo : BuildType({
+    name = "Logger | fluent-bit | Replace Fluent From CI Docker Repo to CD Test Docker Repo"
+
+    steps {
+        script {
+            scriptContent = """
+               ls
+            """.trimIndent()
+        }
+    }
+})
+
