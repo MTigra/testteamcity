@@ -29,8 +29,9 @@ version = "2020.2"
 project {
 
     subProject {
-        name = "TSHS"
 
+        name = "TSHS"
+        id = RelativeId("TSHS");
         buildType(ReplaceFluentFromCIDockerRepotoCDTestDockerRepo)
     }
 
